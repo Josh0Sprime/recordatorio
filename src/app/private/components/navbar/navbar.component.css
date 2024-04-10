@@ -1,6 +1,4 @@
 .container {
-    padding: 1rem;
-    background-color: #FFFF;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -8,9 +6,28 @@
 }
 
 .icon-container {
-    background-color: orange;
+    background-color: var(--bg-icon, rgb(251 191 36));
     width: fit-content;
     padding: 0.5rem;
     border-radius: 1rem;
     color: #FFFF;
+    transition: all 0.1s ease-in-out;
+}
+
+.icon-container:hover {
+    cursor: pointer;
+    background-color: var(--bg-icon-hov, rgb(245 158 11));
+}
+
+.container-main {
+    padding: 1rem;
+    display: flex;
+    background-color: #FFFF;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout {
+    --bg-icon: rgb(31 41 55);
+    --bg-icon-hov: rgb(17 24 39);
 }

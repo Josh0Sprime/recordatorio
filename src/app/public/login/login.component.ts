@@ -34,21 +34,21 @@ export class LoginComponent {
   })
 
   public canYourSee = signal<Icon>({
-    icon: "pi pi-eye",
-    type: "text"
+    icon: "pi pi-eye-slash",
+    type: "password"
   });
 
 
   seePassword() {
-    if( this.canYourSee().icon === "pi pi-eye-slash" ) {
-      this.canYourSee.set({
-        icon: "pi pi-eye",
-        type: "text"
-      });
-    }else {
+    if( this.canYourSee().icon === "pi pi-eye" ) {
       this.canYourSee.set({
         icon: "pi pi-eye-slash",
         type: "password"
+      });
+    }else {
+      this.canYourSee.set({
+        icon: "pi pi-eye",
+        type: "text"
       });
     }
   }

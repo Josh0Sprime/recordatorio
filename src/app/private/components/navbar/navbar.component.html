@@ -1,6 +1,11 @@
-<div class="container">
-    <div class="icon-container">
-        <i class="pi pi-user"></i>
+<div class="container-main">
+    <div class="container">
+        <div class="icon-container">
+            <i class="pi pi-user"></i>
+        </div>
+        <p>{{ userName() }}</p>
     </div>
-    <p>Josho</p>
+    <div (click)="logOut()" class="icon-container logout">
+        <i class="pi pi-sign-out"></i>
+    </div>
 </div>
