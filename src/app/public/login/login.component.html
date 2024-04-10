@@ -1,0 +1,31 @@
+<div class="container">
+    <form [formGroup]="loginForm">
+        <div class="login-container">
+            <div class="logo-container">
+                <img class="logo" src="../../../assets/img/login/logo.svg">
+            </div>
+            <div>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-user"></i>
+                    <input formControlName="user" placeholder="Usuario" type="text" pInputText/>
+                </span>
+                @if (loginForm.controls["user"].errors && loginForm.controls["user"].touched) {
+                    <p class="form-alert">Por favor completar este campo <3.</p>
+                }
+            </div>
+            <div>
+                <span class="p-input-icon-left">
+                    <i (click)="seePassword()" [ngClass]="canYourSee().icon" ></i>
+                    <input formControlName="password" [type]="canYourSee().type" placeholder="contraseña" pInputText />
+                </span>
+                @if (loginForm.controls["password"].errors && loginForm.controls["password"].touched) {
+                    <p class="form-alert">Por favor completar este campo <3.</p>
+                }
+            </div>
+           
+            <p-button (click)="logIn()" styleClass="btn-login" label="Submit"></p-button>
+        </div>
+    </form>
+</div>
+
+<p-toast></p-toast>

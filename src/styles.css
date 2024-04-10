@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+body {
+    margin: 0;
+    background-color: rgb(30 41 59)
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.p-button {
+    width: 100%;
+}
+
+p {
+    margin: 0;
+}

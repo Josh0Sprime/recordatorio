@@ -1,0 +1,27 @@
+
+.logo {
+    width: 5rem;
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #FFFF;
+    padding: 5rem;
+    border-radius: 1rem;
+}
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-alert {
+    color: rgb(221, 32, 32);
+}
