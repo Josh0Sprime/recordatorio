@@ -11,4 +11,6 @@ import { FormularioComponent } from '../components/formulario/formulario.compone
 })
 export class MiperfilComponent {
 
+  public actualDate: Date = new Date();
+
 }

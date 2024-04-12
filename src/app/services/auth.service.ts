@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { environments } from '../../environments/environments.local';
 import { Observable, map, tap } from 'rxjs';
 import { JwtValidate, LoginResponse } from '../interfaces/login';
 import { Router } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   private user = signal<{ user: string, userId: number } | null>(null);
-  private url: string = `${environments.baseUrl}/user`
-  private urlToken: string = `${environments.baseUrl}/token`;
+  private url: string = `${environment.baseUrl}/user`
+  private urlToken: string = `${environment.baseUrl}/token`;
 
   constructor(private http: HttpClient, private router: Router) { }
 

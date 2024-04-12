@@ -19,3 +19,23 @@
 .add-icon:hover {
     background-color: rgb(101 163 13);
 }
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.close-icon {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.close-icon:hover {
+    background-color: rgba(0, 0, 0, 0.219);
+}

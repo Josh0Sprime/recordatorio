@@ -1,11 +1,29 @@
-.container {
+.content {
+    grid-area: body;
     background-color: #FFFF;
     border-radius: 0.5rem;
-    margin-top: 1rem !important;
     max-width: 50rem;
     margin: 0 auto;
+    padding: 0rem 1rem;
 }
 
-.content {
-    padding: 0.5rem 1rem;
+.footer {
+    display: grid;
+    align-items: center;
+    background-color: #FFFF;
+    grid-area: footer;
+    padding: 0rem 1rem;
+}
+.navbar {
+    grid-area: navbar;
+}
+
+.container-main {
+    display: grid;
+    height: 100vh;
+    grid-template-areas: "navbar"
+                         "body"
+                         "footer";
+
+    grid-template-rows: 10% 86% 4%;
 }

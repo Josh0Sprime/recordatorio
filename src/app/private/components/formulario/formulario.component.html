@@ -1,7 +1,17 @@
 <div class="recordatorio-container">
     <h1>Mis recordatorios</h1>
-    <div class="add-icon">
+    <div (click)="abrirModal()" class="add-icon">
         <i class="pi pi-plus"></i>
         <p>Nuevo</p>
     </div>
 </div>
+<p-dialog [modal]="true" [draggable]="false" [closable]="false" [visible]="isModalActive()" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <div class="modal-header">
+            <h2>Nuevo recordatorio</h2>
+            <div (click)="abrirModal()" class="close-icon">
+                <i class="pi pi-times"></i>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
