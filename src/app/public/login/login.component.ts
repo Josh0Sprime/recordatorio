@@ -11,6 +11,12 @@ import { MessageService } from 'primeng/api';
 interface Icon {
   icon: string;
   type: string;
+  origin: string;
+}
+
+interface IconOrigin {
+  login?: Icon,
+  register?: Icon
 }
 
 @Component({
@@ -33,23 +39,74 @@ export class LoginComponent {
     password: ["", Validators.required]
   })
 
-  public canYourSee = signal<Icon>({
-    icon: "pi pi-eye-slash",
-    type: "password"
+  public registerForm: FormGroup = this.fb.group({
+    user: ["", Validators.required],
+    password: ["", Validators.required],
+    email: ["", [Validators.required, Validators.email]]
+  })
+
+  public canYourSee = signal<IconOrigin>({
+    login: {
+      icon: "pi pi-eye-slash",
+      type: "password",
+      origin: "login"
+    },
+    register: {
+      icon: "pi pi-eye-slash",
+      type: "password",
+      origin: "login"
+    }
   });
 
+  public isLogInPage = signal<boolean>(true);
 
-  seePassword() {
-    if( this.canYourSee().icon === "pi pi-eye" ) {
-      this.canYourSee.set({
-        icon: "pi pi-eye-slash",
-        type: "password"
-      });
-    }else {
-      this.canYourSee.set({
-        icon: "pi pi-eye",
-        type: "text"
-      });
+  changeRegisterPage() {
+    this.loginForm.reset();
+    this.registerForm.reset();
+    this.isLogInPage.set(!this.isLogInPage());
+  }
+
+
+  seePassword(origin: string) {
+    switch(origin) {
+      case "login":
+        if( this.canYourSee().login!.icon === "pi pi-eye" ) {
+          this.canYourSee.set({
+            login: {
+              icon: "pi pi-eye-slash",
+              type: "password",
+              origin
+            }
+          });
+        }else {
+          this.canYourSee.set({
+            login: {
+              icon: "pi pi-eye",
+              type: "text",
+              origin
+            }
+          });
+        }
+        break
+      case "register":
+        if( this.canYourSee().register!.icon === "pi pi-eye" ) {
+          this.canYourSee.set({
+            register: {
+              icon: "pi pi-eye-slash",
+              type: "password",
+              origin
+            }
+          });
+        }else {
+          this.canYourSee.set({
+            register: {
+              icon: "pi pi-eye",
+              type: "text",
+              origin
+            }
+          });
+        }
+      break
     }
   }
 
@@ -69,6 +126,23 @@ export class LoginComponent {
       this.loginForm.markAllAsTouched();
     }
 
+  }
+
+  registerUser() {
+    if( this.registerForm.valid ){
+      this.userService.registerUser(this.registerForm.value)
+      .subscribe({
+        next: (resp) => {
+          if( resp.ok ) {
+            this.messageService.add({ severity: "success", summary: "ok!", detail: resp.msg })
+            return
+          }
+          this.messageService.add({ severity: "warn", summary: "ups!", detail: resp.msg })
+         }
+      })
+    }else {
+      this.registerForm.markAllAsTouched();
+    }
   }
 
 }

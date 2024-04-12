@@ -1,9 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [DialogModule],
+  imports: [DialogModule, InputTextModule, InputTextareaModule, ButtonModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })

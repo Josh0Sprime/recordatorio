@@ -25,3 +25,31 @@
 .form-alert {
     color: rgb(221, 32, 32);
 }
+
+
+.btn-register {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(54, 54, 230);
+    transition: all 0.1s ease-in;
+}
+
+.btn-register:hover {
+    color: rgb(39, 39, 201);
+}
+
+.back-login {
+    cursor: pointer;
+    background-color: rgb(232, 232, 45);
+    color: #FFFF;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.1 ease-in;
+}
+
+.back-login:hover {
+    background-color: rgb(245, 245, 31);
+}

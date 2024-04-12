@@ -1,11 +1,13 @@
-<div class="recordatorio-container">
-    <h1>Mis recordatorios</h1>
-    <div (click)="abrirModal()" class="add-icon">
-        <i class="pi pi-plus"></i>
-        <p>Nuevo</p>
+<div class="container">
+    <div class="recordatorio-container">
+        <h1>Mis recordatorios</h1>
+        <div (click)="abrirModal()" class="add-icon">
+            <i class="pi pi-plus"></i>
+            <p>Nuevo</p>
+        </div>
     </div>
 </div>
-<p-dialog [modal]="true" [draggable]="false" [closable]="false" [visible]="isModalActive()" [style]="{width: '50vw'}">
+<p-dialog [modal]="true" [style]="{ width: '50vw' }"  [breakpoints]="{ '960px': '75vw' }" [draggable]="false" [closable]="false" [visible]="isModalActive()" [responsive]="true">
     <ng-template pTemplate="header">
         <div class="modal-header">
             <h2>Nuevo recordatorio</h2>
@@ -14,4 +16,21 @@
             </div>
         </div>
     </ng-template>
+    <section class="form-content">
+        <div class="form-header">
+            <section class="form-input">
+                <p>Titulo</p>
+                <input type="text" pInputText />
+            </section>
+            <section class="form-input">
+                <p>Topic</p>
+                <input type="text" pInputText />
+            </section>
+        </div>
+        <section class="form-input">
+            <p>Descripcion</p>
+            <textarea [autoResize]="true" placeholder="Ingrese descripcion" maxlength="20" rows="5" cols="30" pInputTextarea></textarea>
+        </section>
+        <button pButton pRipple label="Crear" class="p-button-success"></button>
+    </section>
 </p-dialog>

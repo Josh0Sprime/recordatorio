@@ -17,6 +17,9 @@
 .navbar {
     grid-area: navbar;
 }
+.container {
+    margin-top: 1rem;
+}
 
 .container-main {
     display: grid;
@@ -26,4 +29,16 @@
                          "footer";
 
     grid-template-rows: 10% 86% 4%;
+}
+
+.recordatorio-container {
+    margin-top: 1rem !important;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.recordatorio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
 }

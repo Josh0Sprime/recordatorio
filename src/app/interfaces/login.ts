@@ -8,6 +8,11 @@ export interface LoginResponse {
     userId: number;
 }
 
+export interface RegisterUserResponse {
+    ok: boolean;
+    msg: string;
+}
+
 export interface JwtValidate {
     ok: boolean;
     data?: {

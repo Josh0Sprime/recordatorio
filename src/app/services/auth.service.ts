@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
-import { JwtValidate, LoginResponse } from '../interfaces/login';
+import { JwtValidate, LoginResponse, RegisterUserResponse } from '../interfaces/login';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 @Injectable({
@@ -33,6 +33,11 @@ export class AuthService {
         }
       })
     )
+  }
+
+  registerUser(user: { user: string, password: string, email: string }): Observable<RegisterUserResponse> {
+    
+    return this.http.post<RegisterUserResponse>(this.url, user);
   }
 
   validateToken(): Promise<boolean> {

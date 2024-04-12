@@ -1,30 +1,73 @@
 <div class="container">
-    <form [formGroup]="loginForm">
-        <div class="login-container">
-            <div class="logo-container">
-                <img class="logo" src="../../../assets/img/login/logo.svg">
+    @if (isLogInPage()) {
+        <form [formGroup]="loginForm">
+            <div class="login-container">
+                <div class="logo-container">
+                    <img class="logo" src="../../../assets/img/login/logo.svg">
+                </div>
+                <div>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+                        <input formControlName="user" placeholder="Usuario" type="text" pInputText/>
+                    </span>
+                    @if (loginForm.controls["user"].errors && loginForm.controls["user"].touched) {
+                        <p class="form-alert">Por favor completar este campo <3.</p>
+                    }
+                </div>
+                <div>
+                    <span class="p-input-icon-left">
+                        <i (click)="seePassword('login')" [ngClass]="canYourSee().login?.icon" ></i>
+                        <input formControlName="password" [type]="canYourSee().login?.type" placeholder="contraseña" pInputText />
+                    </span>
+                    @if (loginForm.controls["password"].errors && loginForm.controls["password"].touched) {
+                        <p class="form-alert">Por favor completar este campo <3.</p>
+                    }
+                </div>
+                <p-button (click)="logIn()" styleClass="btn-login" label="Iniciar sesion"></p-button>
+                <p (click)="changeRegisterPage()" class="btn-register">Crear mi cuenta</p>
             </div>
-            <div>
+        </form>
+    }
+    @else {
+        <form [formGroup]="registerForm">
+            <div class="login-container">
+                <div (click)="changeRegisterPage()" class="back-login">
+                    <i class="pi pi-chevron-left"></i>
+                </div>
+                <h3>Crear cuenta</h3>
                 <span class="p-input-icon-left">
                     <i class="pi pi-user"></i>
                     <input formControlName="user" placeholder="Usuario" type="text" pInputText/>
                 </span>
-                @if (loginForm.controls["user"].errors && loginForm.controls["user"].touched) {
+                @if (registerForm.controls["user"].errors && registerForm.controls["user"].touched) {
                     <p class="form-alert">Por favor completar este campo <3.</p>
                 }
-            </div>
-            <div>
                 <span class="p-input-icon-left">
-                    <i (click)="seePassword()" [ngClass]="canYourSee().icon" ></i>
-                    <input formControlName="password" [type]="canYourSee().type" placeholder="contraseña" pInputText />
+                    <i class="pi pi-envelope"></i>
+                    <input formControlName="email" placeholder="Email" type="text" pInputText/>
                 </span>
-                @if (loginForm.controls["password"].errors && loginForm.controls["password"].touched) {
-                    <p class="form-alert">Por favor completar este campo <3.</p>
+                @if (registerForm.controls["email"].errors && registerForm.controls["email"].touched) {
+                    @if (registerForm.controls["email"].errors["required"]) {
+                        <p class="form-alert">Por favor completar este campo <3.</p>
+                    }
+                    @else {
+                        <p class="form-alert">Por favor ingresar un email valido. <3.</p>
+                    }
                 }
+                <div>
+                    <span class="p-input-icon-left">
+                        <i (click)="seePassword('register')" [ngClass]="canYourSee().register?.icon" ></i>
+                        <input formControlName="password" [type]="canYourSee().register?.type" placeholder="contraseña" pInputText />
+                    </span>
+                    @if (registerForm.controls["password"].errors && registerForm.controls["password"].touched) {
+                        <p class="form-alert">Por favor completar este campo <3.</p>
+                    }
+                </div>
+                <p-button (click)="registerUser()" styleClass="btn-login" label="Registrarse"></p-button>
+
             </div>
-            <p-button (click)="logIn()" styleClass="btn-login" label="Submit"></p-button>
-        </div>
-    </form>
+        </form>
+    }
 </div>
 
 <p-toast></p-toast>
